@@ -1,0 +1,41 @@
+# MuratovaLife
+
+Готовая версия главной страницы MuratovaLife на Next.js.
+
+## Дизайн-система
+
+- Заголовки: Forum
+- Основной текст и интерфейс: Manrope
+- Главный заголовок: 58–68 px на компьютере, 38–44 px на телефоне
+- Заголовки разделов: 36–44 px
+- Заголовки карточек: 24–28 px
+- Основной текст: 17–19 px
+- Мелкие подписи: 13–15 px
+- Навигация: 14–16 px
+
+Дизайн-токены находятся в `src/app/tokens.css`.
+
+## Запуск
+
+```bash
+npm install
+npm run dev
+```
+
+## Coolify
+
+- Build Pack: Nixpacks
+- Port: 3000
+- Install Command: `npm install`
+- Build Command: `npm run build`
+- Start Command: `npm run start`
+- Base Directory: `/`
+- Static site: выключено
+
+## Изменение фотографии
+
+Замените файл:
+
+`public/images/svetlana-muratova.jpeg`
+
+Формат и имя лучше оставить прежними, тогда код менять не потребуется.
