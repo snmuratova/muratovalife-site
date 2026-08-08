@@ -86,7 +86,18 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top">MuratovaLife</a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#top">Главная</a><a href="#products">Продукты</a><a href="#free-materials">Бесплатные материалы</a><a href="#blog">Блог</a><a href="#about">Обо мне</a><a href="#contacts">Контакты</a>
+          <a href="#top">Главная</a>
+          <a href="#products">Продукты</a>
+          <details className="nav-dropdown">
+            <summary>Бесплатные материалы</summary>
+            <div className="nav-dropdown-menu">
+              <a href="https://t.me/spokoino_online_bot" target="_blank" rel="noopener noreferrer">Спокойно</a>
+              <a href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer">Метафорические образы</a>
+            </div>
+          </details>
+          <a href="/blog">Блог</a>
+          <a href="#about">Обо мне</a>
+          <a href="#contacts">Контакты</a>
         </nav>
         <a className="primary-button header-button" href="#contacts">Связаться</a>
         <button className="menu-button" aria-label="Открыть меню"><Icon name="menu" /></button>
@@ -147,41 +158,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="free-materials" className="section section-shell">
-        <div className="section-heading"><span>03</span><h2>Бесплатные материалы</h2></div>
-        <div className="free-grid">
-          <article className="free-card">
-            <span className="icon-circle"><Icon name="moon" /></span>
-            <div>
-              <h3>Спокойно</h3>
-              <p>Практики для снижения тревоги и внутреннего напряжения.</p>
-            </div>
-            <ArrowButton label="Открыть бот «Спокойно»" href="https://t.me/spokoino_online_bot" external />
-          </article>
-
-          <article className="free-card">
-            <span className="icon-circle"><Icon name="image" /></span>
-            <div>
-              <h3>Метафорические образы</h3>
-              <p>Образы и практики для размышлений и внутреннего отклика.</p>
-            </div>
-            <ArrowButton label="Открыть бот «Метафорические образы»" href="https://t.me/mak_practice_bot" external />
-          </article>
-        </div>
-      </section>
-
-      <section id="blog" className="section section-shell blog-section">
-        <div className="section-heading"><span>04</span><h2>Блог</h2></div>
-        <article className="blog-card">
-          <div>
-            <h3>Тёплая психология</h3>
-            <p>Материалы о психологии, качестве жизни, обучении и восстановлении.</p>
-          </div>
-          <ArrowButton label="Перейти в Telegram-канал «Тёплая психология»" href="https://t.me/teplaya_psihologiya" external />
-        </article>
-      </section>
-
-      <section className="section section-shell bottom-grid">
+<section className="section section-shell bottom-grid">
         <article id="cases" className="wide-card">
           <div>
             <h2>Из практики</h2>
