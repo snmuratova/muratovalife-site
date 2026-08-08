@@ -51,8 +51,22 @@ const qualityCards = [
   { icon: "heart", title: "Тёплая психология", text: "Поддержка, понимание и бережное сопровождение." },
 ];
 
-function ArrowButton({ label }) {
-  return <button className="arrow-button" aria-label={label}><Icon name="arrow" /></button>;
+function ArrowButton({ label, href, external = false }) {
+  if (href) {
+    return (
+      <a
+        className="arrow-button"
+        href={href}
+        aria-label={label}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+      >
+        <Icon name="arrow" />
+      </a>
+    );
+  }
+
+  return <button className="arrow-button" type="button" aria-label={label}><Icon name="arrow" /></button>;
 }
 
 export default function Home() {
@@ -72,7 +86,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top">MuratovaLife</a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#top">Главная</a><a href="#learning">Обучение и развитие</a><a href="#quality">Качество жизни</a><a href="#cases">Из практики</a><a href="#about">Обо мне</a><a href="#contacts">Контакты</a>
+          <a href="#top">Главная</a><a href="#products">Продукты</a><a href="#free-materials">Бесплатные материалы</a><a href="#blog">Блог</a><a href="#about">Обо мне</a><a href="#contacts">Контакты</a>
         </nav>
         <a className="primary-button header-button" href="#contacts">Связаться</a>
         <button className="menu-button" aria-label="Открыть меню"><Icon name="menu" /></button>
@@ -93,18 +107,18 @@ export default function Home() {
             <article className="direction-card direction-learning">
               <span className="icon-circle"><Icon name="person" /></span>
               <div><h2>Обучение и развитие</h2><p>Помогаю понять причины учебных трудностей и выстроить подходящую ребёнку стратегию обучения и развития.</p></div>
-              <ArrowButton label="Перейти к обучению и развитию" />
+              <ArrowButton label="Перейти к обучению и развитию" href="#learning" />
             </article>
             <article className="direction-card direction-quality">
               <span className="icon-circle"><Icon name="heart" /></span>
               <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления.</p></div>
-              <ArrowButton label="Перейти к качеству жизни" />
+              <ArrowButton label="Перейти к качеству жизни" href="#quality" />
             </article>
           </div>
         </div>
       </section>
 
-      <section id="learning" className="section section-shell">
+      <section id="products" className="section section-shell"><div id="learning" className="anchor-offset" aria-hidden="true" />
         <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
         <div className="learning-grid">
           {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} /></article>)}
@@ -114,8 +128,57 @@ export default function Home() {
       <section id="quality" className="section section-shell quality-section">
         <div className="section-heading"><span>02</span><h2>Качество жизни</h2></div>
         <div className="quality-grid">
-          {qualityCards.map((card, index) => <article className={`quality-card quality-${index + 1}`} key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><div><h3>{card.title}</h3><p>{card.text}</p></div><ArrowButton label={`Открыть: ${card.title}`} /></article>)}
+          {qualityCards.map((card, index) => {
+            const links = {
+              "Спокойно": "https://t.me/spokoino_online_bot",
+              "Метафорические образы": "https://t.me/mak_practice_bot",
+              "Тёплая психология": "https://t.me/teplaya_psihologiya",
+            };
+            const href = links[card.title];
+
+            return (
+              <article className={`quality-card quality-${index + 1}`} key={card.title}>
+                <span className="icon-circle"><Icon name={card.icon} /></span>
+                <div><h3>{card.title}</h3><p>{card.text}</p></div>
+                <ArrowButton label={`Открыть: ${card.title}`} href={href} external={Boolean(href)} />
+              </article>
+            );
+          })}
         </div>
+      </section>
+
+      <section id="free-materials" className="section section-shell">
+        <div className="section-heading"><span>03</span><h2>Бесплатные материалы</h2></div>
+        <div className="free-grid">
+          <article className="free-card">
+            <span className="icon-circle"><Icon name="moon" /></span>
+            <div>
+              <h3>Спокойно</h3>
+              <p>Практики для снижения тревоги и внутреннего напряжения.</p>
+            </div>
+            <ArrowButton label="Открыть бот «Спокойно»" href="https://t.me/spokoino_online_bot" external />
+          </article>
+
+          <article className="free-card">
+            <span className="icon-circle"><Icon name="image" /></span>
+            <div>
+              <h3>Метафорические образы</h3>
+              <p>Образы и практики для размышлений и внутреннего отклика.</p>
+            </div>
+            <ArrowButton label="Открыть бот «Метафорические образы»" href="https://t.me/mak_practice_bot" external />
+          </article>
+        </div>
+      </section>
+
+      <section id="blog" className="section section-shell blog-section">
+        <div className="section-heading"><span>04</span><h2>Блог</h2></div>
+        <article className="blog-card">
+          <div>
+            <h3>Тёплая психология</h3>
+            <p>Материалы о психологии, качестве жизни, обучении и восстановлении.</p>
+          </div>
+          <ArrowButton label="Перейти в Telegram-канал «Тёплая психология»" href="https://t.me/teplaya_psihologiya" external />
+        </article>
       </section>
 
       <section className="section section-shell bottom-grid">
