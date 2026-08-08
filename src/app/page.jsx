@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 function Icon({ name }) {
@@ -26,6 +28,8 @@ function Icon({ name }) {
     heart: <><path d="M20.8 4.6a5.4 5.4 0 0 0-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 1 0-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></>,
     arrow: <><path d="M5 12h14M14 7l5 5-5 5"/></>,
     menu: <><path d="M4 7h16M4 12h16M4 17h16"/></>,
+    instagram: <><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></>,
+    telegram: <><path d="M21 3 3.8 10.2c-.8.3-.8 1.5.1 1.8l4.5 1.5 1.5 4.5c.3.9 1.5.9 1.8.1L21 3Z"/><path d="m8.4 13.5 5.2-5.2"/></>,
   };
 
   return <svg {...common}>{paths[name]}</svg>;
@@ -52,6 +56,17 @@ function ArrowButton({ label }) {
 }
 
 export default function Home() {
+  function handleContactSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") || "").trim();
+    const contact = String(data.get("contact") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const subject = encodeURIComponent(`Сообщение с MuratovaLife${name ? ` — ${name}` : ""}`);
+    const body = encodeURIComponent(`Имя: ${name}\nКонтакт для ответа: ${contact}\n\nЗапрос:\n${message}`);
+    window.location.href = `mailto:snmuratova@gmail.com?subject=${subject}&body=${body}`;
+  }
+
   return (
     <main>
       <header className="site-header">
@@ -105,8 +120,30 @@ export default function Home() {
 
       <section className="section section-shell bottom-grid">
         <article id="cases" className="wide-card"><div><span className="eyebrow">Кейсы</span><h2>Истории работы и результаты</h2><p>Первые результаты диагностики и сопровождения.</p></div><ArrowButton label="Смотреть кейсы" /></article>
-        <article id="about" className="wide-card powder"><div><span className="eyebrow">Обо мне</span><h2>Светлана Муратова</h2><p>Я создаю индивидуальные стратегии обучения и развития для детей и подростков.</p></div><ArrowButton label="Подробнее обо мне" /></article>
-        <article id="contacts" className="wide-card sage"><div><span className="eyebrow">Контакты</span><h2>Связаться</h2><p>Санкт-Петербург и онлайн</p><a href="mailto:hello@muratovalife.ru">hello@muratovalife.ru</a></div><ArrowButton label="Написать" /></article>
+        <article id="about" className="wide-card powder">
+          <div>
+            <span className="eyebrow">Обо мне</span>
+            <h2>Светлана Муратова</h2>
+            <p>Я создаю индивидуальные стратегии обучения и развития для детей и подростков.</p>
+            <div className="about-socials" aria-label="Социальные сети">
+              <a className="social-link" href="https://instagram.com/muratovalife" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" /></a>
+              <a className="social-link" href="https://t.me/teplaya_psihologiya" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Тёплая психология"><Icon name="telegram" /></a>
+            </div>
+          </div>
+          <ArrowButton label="Подробнее обо мне" />
+        </article>
+        <article id="contacts" className="wide-card sage contact-card">
+          <div>
+            <span className="eyebrow">Связаться</span>
+            <h2>Напишите мне</h2>
+            <form className="contact-form" onSubmit={handleContactSubmit}>
+              <label><span>Имя</span><input name="name" type="text" autoComplete="name" /></label>
+              <label><span>Email или Telegram</span><input name="contact" type="text" required /></label>
+              <label><span>Ваш запрос</span><textarea name="message" rows="4" required /></label>
+              <button className="primary-button form-button" type="submit">Отправить</button>
+            </form>
+          </div>
+        </article>
       </section>
 
       <footer className="site-footer section-shell"><span>MuratovaLife</span><span>© 2026 Светлана Муратова</span></footer>

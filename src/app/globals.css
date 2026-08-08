@@ -96,3 +96,43 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* v6: social links and contact form */
+.about-socials { display: flex; gap: 12px; margin-top: 20px; }
+.social-link { width: 44px; height: 44px; border: 1px solid var(--color-border); border-radius: 50%; display: inline-grid; place-items: center; color: var(--color-evergreen); background: rgba(255,255,255,.58); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.social-link:hover { transform: translateY(-2px); border-color: rgba(79,98,86,.38); background: #fff; }
+.social-link svg { width: 20px; height: 20px; }
+.contact-card { min-height: 100%; }
+.contact-form { display: grid; gap: 14px; margin-top: 20px; }
+.contact-form label { display: grid; gap: 7px; color: var(--color-text-secondary); font-size: var(--text-small); }
+.contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--color-border); border-radius: 14px; background: rgba(255,255,255,.68); color: var(--color-text); font: inherit; font-size: 15px; padding: 12px 14px; outline: none; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+.contact-form textarea { resize: vertical; min-height: 108px; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: rgba(79,98,86,.55); box-shadow: 0 0 0 3px rgba(79,98,86,.08); background: #fff; }
+.form-button { border: 0; cursor: pointer; justify-self: start; margin-top: 2px; }
+
+@media (max-width: 1080px) {
+  .hero-content { padding-bottom: 8px; }
+}
+
+@media (max-width: 680px) {
+  body { padding-top: env(safe-area-inset-top, 0px); }
+  .site-header { min-height: 72px; padding-top: 2px; }
+  .hero { padding-top: 18px; gap: 28px; }
+  .hero-photo { min-height: 0; height: min(72vh, 620px); max-height: 620px; }
+  .hero-photo img { object-position: center 34%; }
+  .hero-content { padding-top: 2px; }
+  .hero-signature { margin-bottom: 2px; }
+  .hero-name { font-size: clamp(31px, 9vw, 40px); }
+  .hero-role { font-size: 13px; }
+  h1 { font-size: clamp(40px, 10.5vw, 42px); line-height: .98; margin: 18px 0 16px; letter-spacing: -.012em; }
+  .hero-subtitle { font-size: 17px; line-height: 1.5; margin: 0 auto 24px; max-width: 92%; }
+  .hero-directions { gap: 14px; }
+  .direction-card { min-height: 0; padding: 20px; grid-template-columns: 48px 1fr; gap: 14px 16px; }
+  .direction-card .icon-circle { width: 48px; height: 48px; }
+  .direction-card h2 { font-size: 26px; margin: 2px 0 10px; }
+  .direction-card p { font-size: 17px; line-height: 1.48; }
+  .direction-card .arrow-button { grid-column: 2; justify-self: end; width: 44px; height: 44px; margin-top: -2px; }
+  .about-socials { margin-top: 18px; }
+  .contact-form input, .contact-form textarea { font-size: 16px; }
+  .form-button { width: 100%; }
+}
