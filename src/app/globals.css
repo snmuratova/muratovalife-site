@@ -18,14 +18,18 @@ main { min-height: 100vh; }
 .hero-photo { min-height: 650px; position: relative; overflow: hidden; border-radius: var(--radius-large); background: var(--color-sand); box-shadow: var(--shadow-card); }
 .hero-photo img { object-fit: cover; object-position: center 35%; }
 .hero-content { display: flex; flex-direction: column; justify-content: center; }
+
+.hero-signature { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 8px; }
+.hero-name { font-family: "Snell Roundhand", "Segoe Script", "URW Chancery L", cursive; font-size: clamp(30px, 3vw, 46px); line-height: 1.05; color: var(--color-text); }
+.hero-role { font-size: var(--text-small); letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-secondary); }
 .eyebrow { font-size: var(--text-small); line-height: 1.7; letter-spacing: .16em; text-transform: uppercase; color: var(--color-text-secondary); }
 h1,h2,h3,p { margin-top: 0; }
-h1 { margin: 22px 0 24px; max-width: 880px; font-family: var(--font-heading); font-size: var(--text-hero-desktop); line-height: .98; font-weight: 400; letter-spacing: -.015em; }
-.hero-subtitle { max-width: 760px; margin-bottom: 40px; color: var(--color-text-secondary); font-size: var(--text-body); line-height: 1.55; letter-spacing: .06em; }
+h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); font-size: var(--text-hero-desktop); line-height: .98; font-weight: 400; letter-spacing: -.015em; }
+.hero-subtitle { max-width: 760px; margin-bottom: 34px; color: var(--color-text); font-size: var(--text-body); line-height: 1.55; text-align: center; letter-spacing: 0; }
 .hero-directions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .direction-card { min-height: 210px; padding: 26px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: start; border: 1px solid var(--color-border); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
 .direction-learning { background: var(--color-sage-light); }
-.direction-quality { background: var(--color-powder); }
+.direction-quality { background: var(--color-warm-neutral); }
 .direction-card h2 { font-family: var(--font-heading); font-size: var(--text-card); font-weight: 400; line-height: 1.05; margin: 4px 0 14px; }
 .direction-card p { margin: 0; color: var(--color-text-secondary); font-size: 15px; line-height: 1.55; }
 .icon-circle { flex: none; width: 52px; height: 52px; display: inline-grid; place-items: center; border: 1px solid rgba(55,52,50,.12); border-radius: 50%; color: var(--color-sage-deep); background: rgba(255,255,255,.56); }
@@ -40,7 +44,7 @@ h1 { margin: 22px 0 24px; max-width: 880px; font-family: var(--font-heading); fo
 .learning-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .service-card { min-height: 330px; position: relative; padding: 26px; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--shadow-card); }
 .service-card:nth-child(2), .service-card:nth-child(5) { background: var(--color-sand); }
-.service-card:nth-child(3) { background: var(--color-blush); }
+.service-card:nth-child(3) { background: var(--color-herb-light); }
 .service-card:nth-child(6) { background: var(--color-mist); }
 .service-card h3 { margin: 34px 0 18px; font-family: var(--font-heading); font-size: var(--text-card); line-height: 1.08; font-weight: 400; }
 .service-card p { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; max-width: 30ch; }
@@ -49,13 +53,13 @@ h1 { margin: 22px 0 24px; max-width: 880px; font-family: var(--font-heading); fo
 .quality-section { border-top: 1px solid var(--color-border); }
 .quality-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .quality-card { min-height: 230px; padding: 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: start; border-radius: var(--radius-card); border: 1px solid var(--color-border); box-shadow: var(--shadow-card); }
-.quality-1 { background: var(--color-sage-light); }.quality-2 { background: var(--color-sand); }.quality-3 { background: var(--color-blush); }.quality-4 { background: var(--color-powder); }
+.quality-1 { background: var(--color-herb-light); }.quality-2 { background: var(--color-sand); }.quality-3 { background: var(--color-mist); }.quality-4 { background: var(--color-warm-neutral); }
 .quality-card h3 { font-family: var(--font-heading); font-size: var(--text-card); font-weight: 400; margin: 6px 0 16px; }
 .quality-card p { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
 
 .bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding-top: 0; }
 .wide-card { min-height: 290px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--color-border); border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--shadow-card); }
-.wide-card.powder { background: var(--color-powder); }.wide-card.sage { background: var(--color-sage-light); }
+.wide-card.powder { background: var(--color-warm-neutral); }.wide-card.sage { background: var(--color-herb-light); }
 .wide-card h2 { font-family: var(--font-heading); font-size: var(--text-card); font-weight: 400; margin: 18px 0 12px; }
 .wide-card p, .wide-card a { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
 .wide-card .arrow-button { align-self: flex-end; }

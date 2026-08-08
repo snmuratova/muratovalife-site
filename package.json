@@ -1,10 +1,10 @@
 {
   "name": "muratovalife-site",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start -p 3000"
   },
   "dependencies": {

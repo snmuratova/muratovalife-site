@@ -68,18 +68,21 @@ export default function Home() {
           <Image src="/images/svetlana-muratova.jpeg" alt="Светлана Муратова, психолог" fill priority sizes="(max-width: 900px) 100vw, 42vw" />
         </div>
         <div className="hero-content">
-          <div className="eyebrow">Светлана Муратова<br />Психолог</div>
-          <h1>Стратегии обучения и развития для детей и подростков</h1>
-          <p className="hero-subtitle">и цифровое пространство эмоционального восстановления</p>
+          <div className="hero-signature">
+            <span className="hero-name">Светлана Муратова</span>
+            <span className="hero-role">Психолог</span>
+          </div>
+          <h1>Наше восприятие определяет качество нашей жизни</h1>
+          <p className="hero-subtitle">Рада приветствовать вас на сайте.</p>
           <div className="hero-directions">
             <article className="direction-card direction-learning">
               <span className="icon-circle"><Icon name="person" /></span>
-              <div><h2>Обучение и развитие</h2><p>Стратегии обучения и развития для детей и подростков</p></div>
+              <div><h2>Обучение и развитие</h2><p>Помогаю понять причины учебных трудностей и выстроить подходящую ребёнку стратегию обучения и развития.</p></div>
               <ArrowButton label="Перейти к обучению и развитию" />
             </article>
             <article className="direction-card direction-quality">
               <span className="icon-circle"><Icon name="heart" /></span>
-              <div><h2>Качество жизни</h2><p>Цифровое пространство эмоционального восстановления</p></div>
+              <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления.</p></div>
               <ArrowButton label="Перейти к качеству жизни" />
             </article>
           </div>
