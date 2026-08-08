@@ -136,3 +136,32 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
   .contact-form input, .contact-form textarea { font-size: 16px; }
   .form-button { width: 100%; }
 }
+
+
+/* v7: refined lower sections */
+.about-content { text-align: center; }
+.about-name {
+  margin: 18px 0 10px;
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 2.2vw, 32px);
+  line-height: 1.08;
+  font-weight: 400;
+}
+.about-socials {
+  justify-content: center;
+}
+.form-button {
+  justify-self: center;
+  min-width: 132px;
+}
+.contact-card h2,
+#cases.wide-card h2,
+#about.wide-card > .about-content > h2,
+#about.wide-card .about-content > h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-card);
+  font-weight: 400;
+}
+@media (max-width: 680px) {
+  .form-button { width: auto; min-width: 132px; }
+}

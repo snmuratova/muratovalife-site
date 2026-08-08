@@ -72,7 +72,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top">MuratovaLife</a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#top">Главная</a><a href="#learning">Обучение и развитие</a><a href="#quality">Качество жизни</a><a href="#cases">Кейсы</a><a href="#about">Обо мне</a><a href="#contacts">Контакты</a>
+          <a href="#top">Главная</a><a href="#learning">Обучение и развитие</a><a href="#quality">Качество жизни</a><a href="#cases">Из практики</a><a href="#about">Обо мне</a><a href="#contacts">Контакты</a>
         </nav>
         <a className="primary-button header-button" href="#contacts">Связаться</a>
         <button className="menu-button" aria-label="Открыть меню"><Icon name="menu" /></button>
@@ -119,12 +119,18 @@ export default function Home() {
       </section>
 
       <section className="section section-shell bottom-grid">
-        <article id="cases" className="wide-card"><div><span className="eyebrow">Кейсы</span><h2>Истории работы и результаты</h2><p>Первые результаты диагностики и сопровождения.</p></div><ArrowButton label="Смотреть кейсы" /></article>
-        <article id="about" className="wide-card powder">
+        <article id="cases" className="wide-card">
           <div>
-            <span className="eyebrow">Обо мне</span>
-            <h2>Светлана Муратова</h2>
-            <p>Я создаю индивидуальные стратегии обучения и развития для детей и подростков.</p>
+            <h2>Из практики</h2>
+          </div>
+          <ArrowButton label="Открыть раздел «Из практики»" />
+        </article>
+
+        <article id="about" className="wide-card powder">
+          <div className="about-content">
+            <h2>Обо мне</h2>
+            <h3 className="about-name">Светлана Муратова</h3>
+            <p>Я создаю индивидуальные стратегии обучения, развития и восстановления.</p>
             <div className="about-socials" aria-label="Социальные сети">
               <a className="social-link" href="https://instagram.com/muratovalife" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" /></a>
               <a className="social-link" href="https://t.me/teplaya_psihologiya" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Тёплая психология"><Icon name="telegram" /></a>
@@ -132,10 +138,10 @@ export default function Home() {
           </div>
           <ArrowButton label="Подробнее обо мне" />
         </article>
+
         <article id="contacts" className="wide-card sage contact-card">
           <div>
-            <span className="eyebrow">Связаться</span>
-            <h2>Напишите мне</h2>
+            <h2>Связаться со мной</h2>
             <form className="contact-form" onSubmit={handleContactSubmit}>
               <label><span>Имя</span><input name="name" type="text" autoComplete="name" /></label>
               <label><span>Email или Telegram</span><input name="contact" type="text" required /></label>
