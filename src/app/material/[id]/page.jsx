@@ -1,0 +1,3 @@
+import {notFound} from 'next/navigation';import {readCards} from '../../../lib/store';
+export const dynamic='force-dynamic';
+export default async function Page({params}){const {id}=await params;const c=(await readCards()).find(c=>c.id===id&&c.visible);if(!c)notFound();return <main className="section-shell section"><a href="/">← Главная</a><h1>{c.title}</h1>{c.image&&<img src={c.image} alt="" style={{maxWidth:'100%',maxHeight:600}}/>}<p>{c.text}</p><p style={{whiteSpace:'pre-wrap'}}>{c.body}</p><p>{c.price}</p>{c.href&&<a className="primary-button" href={c.href}>Перейти к материалу</a>}</main>}

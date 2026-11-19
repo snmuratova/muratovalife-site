@@ -1,0 +1,2 @@
+import {readCards} from './store';
+export default async function Listing({group,title}){const cards=(await readCards()).filter(c=>c.visible&&c.group===group);return <main className="section-shell section"><a href="/">← Главная</a><h1>{title}</h1><div className="learning-grid">{cards.map(c=><article className="service-card" key={c.id}>{c.image&&<img src={c.image} alt="" style={{width:'100%'}}/>}<h3>{c.title}</h3><p>{c.text}</p><p>{c.price}</p><a href={`/material/${c.id}`}>Подробнее →</a></article>)}</div></main>}
