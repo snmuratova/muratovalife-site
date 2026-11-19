@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 function Icon({ name }) {
   const common = {
@@ -70,6 +71,12 @@ function ArrowButton({ label, href, external = false }) {
 }
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    function onKey(event) { if (event.key === "Escape") setMenuOpen(false); }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
   function handleContactSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -85,7 +92,7 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#top">MuratovaLife</a>
-        <nav className="desktop-nav" aria-label="Основная навигация">
+        <nav id="site-navigation" className={`desktop-nav${menuOpen ? " is-open" : ""}`} aria-label="Основная навигация" onClick={(event) => { if (event.target.closest("a")) setMenuOpen(false); }}>
           <a href="#top">Главная</a>
           <a href="#products">Продукты</a>
           <details className="nav-dropdown">
@@ -100,7 +107,7 @@ export default function Home() {
           <a href="#contacts">Контакты</a>
         </nav>
         <a className="primary-button header-button" href="#contacts">Связаться</a>
-        <button className="menu-button" aria-label="Открыть меню"><Icon name="menu" /></button>
+        <button className="menu-button" type="button" aria-controls="site-navigation" aria-expanded={menuOpen} aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} onClick={() => setMenuOpen(!menuOpen)}><Icon name="menu" /></button>
       </header>
 
       <section id="top" className="hero section-shell">

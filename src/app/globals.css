@@ -343,3 +343,26 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
   }
   .blog-page-hero { padding-top: 64px; }
 }
+
+/* v10: responsive navigation and compact homepage heading */
+.hero h1 { font-size: clamp(2.9rem, 3.68vw, 3.4rem); }
+.menu-button { cursor: pointer; }
+.menu-button:focus-visible, .desktop-nav a:focus-visible { outline: 2px solid var(--color-evergreen); outline-offset: 4px; }
+@media (max-width: 1080px) {
+  .site-header { position: relative; }
+  .menu-button { grid-column: 2; grid-row: 1; }
+  .desktop-nav.is-open { display: flex; grid-column: 1 / -1; grid-row: 2; flex-direction: column; align-items: stretch; gap: 0; padding: 0 0 16px; }
+  .desktop-nav.is-open > a, .desktop-nav.is-open > details > summary { display: block; padding: 12px 8px; }
+  .desktop-nav.is-open .nav-dropdown-menu { position: static; transform: none; box-shadow: none; margin: 0 8px 8px; }
+}
+@media (max-width: 680px) { .hero h1 { font-size: clamp(32px, 8.4vw, 33.6px); } }
+.blog-page { background: var(--color-background); }
+.blog-page-hero h1 { text-transform: none; }
+.blog-intro { margin-top: 24px; color: var(--color-text-secondary); line-height: 1.6; }
+.blog-stories { margin-top: 48px; padding: clamp(24px, 4vw, 44px); border: 1px solid var(--color-border); background: var(--color-herb-light); border-radius: var(--radius-card); }
+.blog-stories h2 { font: 400 var(--text-section)/1.1 var(--font-heading); }
+.blog-stories p { line-height: 1.6; color: var(--color-text-secondary); }
+.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px; }
+.story-card { background: var(--color-surface); border-radius: var(--radius-card); padding: 24px; }
+.story-card img { width: 100%; height: auto; border-radius: 14px; }
+.story-card h3 { font: 400 var(--text-card)/1.2 var(--font-heading); }
