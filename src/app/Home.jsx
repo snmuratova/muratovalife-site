@@ -111,12 +111,12 @@ export default function Home({ cards }) {
           <div className="hero-directions">
             <article className="direction-card direction-learning">
               <span className="icon-circle"><Icon name="person" /></span>
-              <div><h2>Обучение и развитие</h2><p>Помогаю понять причины учебных трудностей и выстроить подходящую ребёнку стратегию обучения и развития.</p></div>
+              <div><h2>Обучение и развитие</h2><p>Индивидуальные стратегии обучения, раскрытие способностей и развитие потенциала.</p></div>
               <ArrowButton label="Перейти к обучению и развитию" href="#learning" />
             </article>
             <article className="direction-card direction-quality">
               <span className="icon-circle"><Icon name="heart" /></span>
-              <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления.</p></div>
+              <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления, самопознания и внутреннего равновесия.</p></div>
               <ArrowButton label="Перейти к качеству жизни" href="#quality" />
             </article>
           </div>
@@ -124,7 +124,7 @@ export default function Home({ cards }) {
       </section>
 
       <section id="products" className="section section-shell"><div id="learning" className="anchor-offset" aria-hidden="true" />
-        <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
+        <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
         
         <div className="learning-grid">
           {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (`/material/${card.id}`)} /></article>)}
