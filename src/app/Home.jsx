@@ -125,9 +125,9 @@ export default function Home({ cards }) {
 
       <section id="products" className="section section-shell"><div id="learning" className="anchor-offset" aria-hidden="true" />
         <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
-        <p><a className="primary-button" href="/topics">Исследовать и развиваться</a></p>
+        
         <div className="learning-grid">
-          {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (card.id === "learning-4" ? "/topics/career" : card.id === "learning-5" ? "/topics/learn" : `/material/${card.id}`)} /></article>)}
+          {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (`/material/${card.id}`)} /></article>)}
         </div>
       </section>
 
