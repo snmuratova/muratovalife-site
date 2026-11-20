@@ -482,3 +482,9 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
 .career-mini-bars i{display:block;height:100%;border-radius:20px}
 @media(max-width:760px){.career-mini-preview{grid-template-columns:1fr}.career-mini-art{justify-content:center}}
 @media print{.career-mini-preview{display:none!important}}
+
+/* v22: personal results appear only after testing; no public promotional previews. */
+.career-page .career-dashboard{background:transparent;border:0;border-radius:0;padding:0;margin:clamp(36px,5vw,60px) 0 30px}
+.career-page .career-dashboard-heading{margin-bottom:20px}
+.career-page .career-result-card{box-shadow:none}
+@media print{.career-page .career-dashboard{margin:0!important}}
