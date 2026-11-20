@@ -488,3 +488,11 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
 .career-page .career-dashboard-heading{margin-bottom:20px}
 .career-page .career-result-card{box-shadow:none}
 @media print{.career-page .career-dashboard{margin:0!important}}
+
+/* v23: retain the sample report beside the program description, not as a full-page promotion. */
+.material-page .career-report-preview h2{font:400 clamp(23px,2.5vw,30px)/1.2 var(--font-heading);margin:0 0 14px;}
+.material-page .career-report-preview img{width:100%;max-height:290px;object-fit:contain;object-position:center;mix-blend-mode:multiply;}
+.material-page .career-report-preview figcaption{color:#5b685e;margin:12px 0 18px;}
+.material-page .career-report-preview .primary-button{width:100%;}
+.material-page .career-report-preview .report-secondary{margin-top:12px;}
+.career-page .career-preview-anchor{font-size:15px;}
