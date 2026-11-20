@@ -400,3 +400,23 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
  .editorial-figure{width:min(100%,340px);justify-self:center;}
  .editorial-title{font-size:clamp(32px,9vw,44px);}
 }
+
+/* V18: report preview, directory and life layout. */
+.topic-directory{grid-template-columns:repeat(2,minmax(0,1fr));}
+.topic-directory .service-card{display:flex;flex-direction:column;min-height:0;padding:clamp(20px,3vw,32px);}
+.topic-directory .service-card h2{font:400 clamp(26px,3vw,34px)/1.14 var(--font-heading);margin:0 0 16px;}
+.topic-directory .service-card p{max-width:none;margin:0 0 24px;}
+.topic-directory .service-card a{margin-top:auto;}
+.career-report-layout{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:clamp(20px,3vw,44px);align-items:start;}
+.career-report-preview{margin:0;min-width:0;text-align:center;}
+.career-report-preview img{display:block;width:100%;height:auto;border-radius:12px;}
+.career-report-preview figcaption{font-size:14px;line-height:1.5;margin:12px 0 18px;}
+.career-report-preview .primary-button,.report-secondary{display:flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.3;margin:8px auto;max-width:100%;}
+.report-secondary{padding:10px 16px;}
+.life-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.7fr);gap:32px;align-items:center;}
+.life-hero img{width:100%;max-height:410px;object-fit:contain;mix-blend-mode:multiply;}
+.life-hero p{font-size:18px;line-height:1.6;max-width:40ch;}
+.topic-articles:not(.editorial-cards) .service-card{min-height:0;padding:24px;}
+.topic-articles:not(.editorial-cards) .service-card a{padding-top:16px;}
+.research-grid article{min-height:0;}
+@media(max-width:680px){.topic-directory,.career-report-layout,.life-hero{grid-template-columns:minmax(0,1fr)}.life-hero img{max-height:280px;}}

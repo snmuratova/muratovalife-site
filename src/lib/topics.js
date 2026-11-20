@@ -6,4 +6,4 @@ export const topics={
  life:{title:'Качество жизни',parts:['Ритуалы восстановления','Метафорические образы','Спокойно']},
  stories:{title:'Сказкотерапия',parts:['Завершение игры','Путешествия','Порядок','Саморегуляция']}
 };
-export function testFits(c,id){return c.category===id||(c.id==='thinking'&&id==='career')||(c.id==='e'&&id==='learn');}
+export function testFits(c,id){return c.category===id||(['thinking','perception'].includes(c.id)&&id==='career')||(c.id==='e'&&id==='learn');}

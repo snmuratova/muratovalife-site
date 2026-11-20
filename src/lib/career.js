@@ -1,0 +1,1 @@
+export function careerTitle(c){return ({thinking:'Мышление и креативность',perception:'Особенности восприятия','temperament-teen':'Тип темперамента',e:'Тип темперамента (детская версия)','career-explore':'Профессиональные интересы: саморефлексия'})[c.id]||c.title;}
