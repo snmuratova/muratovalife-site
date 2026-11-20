@@ -1,3 +1,3 @@
-import Listing from "../../lib/Listing";
-export const dynamic="force-dynamic";
-export default function Page(){return <Listing group="blog" title="Блог"/>;}
+import {topics} from '../../lib/topics';import {readCards} from '../../lib/store';
+export const dynamic='force-dynamic';
+export default async function Page(){const other=(await readCards()).filter(c=>c.visible&&c.group==='blog'&&!c.category);return <main className="section-shell section"><a href="/">← Главная</a><h1>Блог</h1><div className="learning-grid">{Object.entries(topics).map(([id,t])=><article className="service-card" key={id}><h3>{t.title}</h3><p>{t.parts.slice(0,3).join(' · ')}</p><a href={'/topics/'+id}>Открыть →</a></article>)}{other.map(c=><article className="service-card" key={c.id}><h3>{c.title}</h3><p>{c.text}</p><a href={'/material/'+c.id}>Читать →</a></article>)}</div></main>}

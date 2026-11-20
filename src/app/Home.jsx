@@ -125,8 +125,9 @@ export default function Home({ cards }) {
 
       <section id="products" className="section section-shell"><div id="learning" className="anchor-offset" aria-hidden="true" />
         <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
+        <p><a className="primary-button" href="/topics">Исследовать и развиваться</a></p>
         <div className="learning-grid">
-          {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || `/material/${card.id}`} /></article>)}
+          {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (card.id === "learning-4" ? "/topics/career" : card.id === "learning-5" ? "/topics/learn" : `/material/${card.id}`)} /></article>)}
         </div>
       </section>
 
@@ -147,20 +148,13 @@ export default function Home({ cards }) {
       </section>
 
 <section className="section section-shell bottom-grid">
-        <article id="cases" className="wide-card">
-          <div>
-            <h2>Из практики</h2>
-          </div>
-          <ArrowButton label="Открыть раздел «Из практики»" />
-        </article>
-
         <article id="about" className="wide-card powder">
           <div className="about-content">
             <h2>Обо мне</h2>
             <h3 className="about-name">Светлана Муратова</h3>
             <p>Я создаю индивидуальные стратегии обучения, развития и восстановления.</p>
             <div className="about-socials" aria-label="Социальные сети">
-              <a className="social-link" href="https://instagram.com/muratovalife" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" /></a>
+              <a className="social-link" href="https://instagram.com/muratovablog" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" /></a>
               <a className="social-link" href="https://t.me/teplaya_psihologiya" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Тёплая психология"><Icon name="telegram" /></a>
             </div>
           </div>
