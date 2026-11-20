@@ -420,3 +420,16 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
 .topic-articles:not(.editorial-cards) .service-card a{padding-top:16px;}
 .research-grid article{min-height:0;}
 @media(max-width:680px){.topic-directory,.career-report-layout,.life-hero{grid-template-columns:minmax(0,1fr)}.life-hero img{max-height:280px;}}
+
+/* v19: watercolor atmosphere, only on the life topic page */
+.life-page{isolation:isolate;position:relative;min-height:100svh;}
+.life-page::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(247,245,242,.83),rgba(247,245,242,.13)),url('/images/forest-path.jpg') center 70% / cover no-repeat;opacity:.44;mix-blend-mode:multiply;}
+.life-heading{padding:clamp(36px,7vw,100px) 0 clamp(28px,5vw,66px);}
+.life-heading h1{margin-top:0;}
+.life-heading p{font-size:clamp(16px,1.5vw,20px);line-height:1.65;color:var(--color-text);margin:0;}
+.life-page .topic-articles{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1120px;}
+.life-page .topic-articles .service-card:nth-child(n){background:rgba(255,253,250,.82);border-color:rgba(94,111,88,.22);min-height:165px;padding:clamp(22px,3vw,32px);box-shadow:0 8px 28px rgba(55,52,50,.05);}
+.life-page .topic-articles .service-card a{align-self:flex-start;color:var(--color-evergreen-deep);padding-top:22px;}
+@media(max-width:680px){.life-page::before{background-position:center 70%;opacity:.34;}.life-page .topic-articles{grid-template-columns:1fr;}.life-heading{padding-top:36px;}.life-page .topic-articles .service-card:nth-child(n){min-height:140px;}}
+
+@media(max-width:900px) and (min-width:681px){.life-page .topic-articles{grid-template-columns:repeat(2,minmax(0,1fr));}}
