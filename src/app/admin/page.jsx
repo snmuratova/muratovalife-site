@@ -9,3 +9,5 @@ function TestEditor({value:t,onChange}){const set=(k,v)=>onChange({...t,[k]:v});
 function RetreatEditor({value,onChange}){
   const updateDay=(i,key,v)=>onChange(value.map((d,j)=>j===i?{...d,[key]:v}:d));
   return <div className="retreat-editor"><h3>Семь дней программы</h3><p>Изменения появятся на странице после нажатия «Сохранить изменения». Заметки посетителей не затрагиваются.</p>{value.map((day,i)=><details key={i}><summary>День {i+1}. {day.name}</summary>{[['name','Название дня'],['caption','Подзаголовок'],['duration','Продолжительность'],['lead','Вступление'],['question','Вопрос для заметок']].map(([key,label])=><label key={key}>{label}<textarea rows={key==='lead'?3:2} value={day[key]||''} onChange={e=>updateDay(i,key,e.target.value)}/></label>)}<label>Шаги практики (один шаг на строку)<textarea rows={8} value={(day.steps||[]).join('\n')} onChange={e=>updateDay(i,'steps',e.target.value.split('\n'))}/></label></details>)}</div>
+
+}
