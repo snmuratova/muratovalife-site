@@ -3,19 +3,19 @@ import {useEffect,useState} from 'react';
 
 const DEFAULT_DAYS = [
   {
-    "name": "Остановиться",
+    "name": "Выдохни. Остановись.",
     "caption": "День 1 · Заметить себя",
     "duration": "8–10 минут",
-    "lead": "Не обязательно сразу становиться спокойнее. Для начала достаточно заметить, как вы себя чувствуете.",
+    "lead": "В течение дня мы редко замечаем, как себя чувствуем. Сегодня попробуйте уделить немного времени себе, своим мыслям и ощущениям.",
     "steps": [
       "Устройтесь удобно и посмотрите вокруг. Найдите три предмета, на которых приятно задержать взгляд.",
       "Спросите себя: «Что я чувствую прямо сейчас?» Можно назвать несколько разных чувств.",
-      "Посмотрите на образ дня. Какая деталь первой привлекла внимание? Не нужно искать правильный ответ."
+      "Откройте метафорическую карту. Рассмотрите изображение. Какая деталь первой привлекла ваше внимание? Какие чувства или ассоциации возникли?"
     ],
     "question": "Чего мне сегодня больше всего хочется?"
   },
   {
-    "name": "Вернуться в тело",
+    "name": "Сосредоточься на ощущениях",
     "caption": "День 2 · Почувствовать опору",
     "duration": "7–10 минут",
     "lead": "Когда мыслей слишком много, можно ненадолго переключить внимание на простые телесные ощущения.",
@@ -27,31 +27,31 @@ const DEFAULT_DAYS = [
     "question": "Что помогает моему телу почувствовать себя комфортнее?"
   },
   {
-    "name": "Найти тихое место",
+    "name": "Тишина",
     "caption": "День 3 · Создать пространство",
     "duration": "10 минут",
     "lead": "Иногда восстановление начинается с небольшого пространства, в котором от нас ничего не требуют.",
     "steps": [
       "Выберите место, где можно побыть без спешки хотя бы несколько минут.",
       "Уберите один источник лишнего шума или раздражения.",
-      "Посмотрите на образ дня и представьте место, в котором вам легко. Что в нём есть?"
+      "Представьте место, в котором вам легко. Что в нём есть?"
     ],
     "question": "Что я могу изменить вокруг себя, чтобы стало чуть спокойнее?"
   },
   {
-    "name": "Отпустить лишнее",
+    "name": "Заметь и отпусти лишнее",
     "caption": "День 4 · Ослабить напряжение",
     "duration": "10–12 минут",
     "lead": "Не все задачи одинаково срочные. Некоторые ожидания можно пересмотреть, не отказываясь от важного.",
     "steps": [
       "Вспомните три дела, которые сейчас занимают ваши мысли.",
-      "Разделите их мысленно на «важно сегодня», «может подождать» и «можно попросить помощи».",
+      "Распределите дела: важное и срочное; важное, но не срочное; срочное, но неважное; неважное и несрочное. Подумайте, в чём можно попросить помощи.",
       "Выберите одну необязательную задачу и разрешите себе не делать её сегодня."
     ],
     "question": "Что я могу не нести на себе в одиночку?"
   },
   {
-    "name": "Тёплый контакт",
+    "name": "Тепло",
     "caption": "День 5 · Почувствовать связь",
     "duration": "10 минут",
     "lead": "Поддержка может быть очень простой: несколько слов, внимание, разговор или добрый жест по отношению к себе.",
@@ -63,7 +63,7 @@ const DEFAULT_DAYS = [
     "question": "Какая поддержка мне нужна сейчас?"
   },
   {
-    "name": "Замечать живое",
+    "name": "Посмотри вокруг",
     "caption": "День 6 · Вернуть интерес",
     "duration": "10–15 минут",
     "lead": "Внимание к приятным мелочам не отменяет сложностей, но помогает замечать, что в дне есть не только обязанности.",
@@ -75,7 +75,7 @@ const DEFAULT_DAYS = [
     "question": "Какие простые вещи возвращают мне ощущение жизни?"
   },
   {
-    "name": "Выбрать свою дорогу",
+    "name": "Что дальше?",
     "caption": "День 7 · Сохранить важное",
     "duration": "12–15 минут",
     "lead": "Завершение ретрита не требует больших решений. Достаточно заметить, что оказалось полезным именно вам.",
@@ -89,7 +89,11 @@ const DEFAULT_DAYS = [
 ];
 const STORE='muratovalife-retreat-v1';
 export default function RetreatJourney({title,description,body,image,retreatDays}){
-  const days = Array.isArray(retreatDays)&&retreatDays.length===7 ? retreatDays : DEFAULT_DAYS;
+  const days = DEFAULT_DAYS.map((day,i)=>({
+    ...day,
+    caption: Array.isArray(retreatDays)&&retreatDays.length===7 ? (retreatDays[i]?.caption||day.caption) : day.caption,
+    duration: Array.isArray(retreatDays)&&retreatDays.length===7 ? (retreatDays[i]?.duration||day.duration) : day.duration
+  }));
   const [done,setDone]=useState([]);
   const [notes,setNotes]=useState({});
   const [ready,setReady]=useState(false);
@@ -114,7 +118,7 @@ export default function RetreatJourney({title,description,body,image,retreatDays
         <p className="retreat-intro">Семь дней, чтобы замедлиться, услышать себя и постепенно вернуть внимание к тому, что поддерживает.</p>
         <p className="retreat-description">{description||'Пространство глубокого эмоционального восстановления.'}</p>
         {body&&<p className="retreat-description">{body}</p>}
-        <a className="retreat-start" href="#retreat-day-1">Начать путешествие <span aria-hidden="true">↓</span></a>
+        <a className="retreat-start" href="#retreat-day-1">Начать практику <span aria-hidden="true">↓</span></a>
         <p className="retreat-hero-small">По 7–15 минут в день · В своём темпе · Без регистрации</p>
       </div>
     </section>
@@ -130,6 +134,8 @@ export default function RetreatJourney({title,description,body,image,retreatDays
           <p className="retreat-lead">{day.lead}</p>
           <h3>Практика дня</h3>
           <ol>{day.steps.map((step,j)=><li key={j}>{step}</li>)}</ol>
+          {i===0&&<a className="retreat-resource" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer">Открыть метафорическую карту ↗</a>}
+          {i===3&&<a className="retreat-resource" href="/practice/priorities">Практика расстановки приоритетов →</a>}
           <label htmlFor={'retreat-note-'+i} className="retreat-question">{day.question}</label>
           <textarea id={'retreat-note-'+i} rows="3" value={notes[i]||''} onChange={e=>setNotes(prev=>({...prev,[i]:e.target.value}))} placeholder="Мои мысли сегодня…" />
           <p className="retreat-private">Заметка хранится только в этом браузере на вашем устройстве.</p>
@@ -138,7 +144,7 @@ export default function RetreatJourney({title,description,body,image,retreatDays
       </div>
     </section>)}
     <footer className="retreat-end" >
-      <div className="retreat-end-content"><p className="retreat-kicker">Продолжение пути</p><h2>Пусть у вас останется время для себя</h2><p>Возвращайтесь к любому дню, когда захочется. Здесь нет обязательного темпа и правильного способа чувствовать.</p><button type="button" className="retreat-download" onClick={downloadNotes}>Скачать мои заметки ↓</button><p className="retreat-private">Файл сохраняется на ваше устройство. Записи не отправляются администратору сайта.</p><a href="#retreat-day-1">Вернуться к первому дню ↑</a><p className="retreat-safety">Эти практики предназначены для самостоятельной эмоциональной поддержки и не заменяют психологическую или медицинскую помощь.</p></div>
+      <div className="retreat-end-content"><p className="retreat-kicker">Продолжение пути</p><h2 className="retreat-handwritten">Пусть у вас останется время для себя</h2><p>Возвращайтесь к любому дню, когда захочется. Здесь нет обязательного темпа и правильного способа чувствовать.</p><button type="button" className="retreat-download" onClick={downloadNotes}>Скачать мои заметки ↓</button><p className="retreat-private">Файл сохраняется на ваше устройство. Записи не отправляются администратору сайта.</p><a href="#retreat-day-1">Вернуться к первому дню ↑</a><p className="retreat-safety">Эти практики предназначены для самостоятельной эмоциональной поддержки и не заменяют психологическую или медицинскую помощь.</p></div>
     </footer>
   </main>;
 }
