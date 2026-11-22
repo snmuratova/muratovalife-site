@@ -5,14 +5,14 @@ export const dynamic = "force-dynamic";
 function chooseFeatured(cards) {
   const blogs = cards.filter(c => c.visible && c.group === "blog");
   const picked = blogs.filter(c => c.featuredOnHome);
-  const asArticle = c => ({id:c.id,title:c.title,text:c.text || "",href:c.href || `/material/${c.id}`,label:"Статья"});
+  const asArticle = c => ({id:c.id,title:c.title,text:c.text || "",href:c.href || `/material/${c.id}`,label:"Статья",image:c.image || (c.id === "v13-grow-3" ? "/images/age5-2.jpg" : c.id === "blog-home-perception" ? "/images/career-preview.jpg" : "")});
   if (picked.length >= 3) return picked.slice(0,3).map(asArticle);
   const five = blogs.find(c => c.id === "v13-grow-3") || blogs.find(c => /^(пять|5) лет$/i.test(c.title.trim()));
   const perception = blogs.find(c => c.id === "blog-home-perception") || blogs.find(c => /как я воспринимаю информацию/i.test(c.title));
   const stories = blogs.find(c => c.id === "blog-home-stories") || blogs.find(c => c.title.trim().toLowerCase() === "сказкотерапия");
   const defaults = [
-    five ? {...asArticle(five),title:"5 лет"} : {id:"five",title:"5 лет",text:"О развитии и особенностях пятилетнего возраста.",href:"/topics/grow",label:"Возраст"},
-    perception ? {...asArticle(perception),label:"Опросник"} : {id:"perception",title:"Как я воспринимаю информацию",text:"Исследование индивидуальных особенностей восприятия.",href:"/test/perception",label:"Опросник"},
+    five ? {...asArticle(five),title:"5 лет"} : {id:"five",title:"5 лет",text:"О развитии и особенностях пятилетнего возраста.",href:"/topics/grow",label:"Возраст",image:"/images/age5-2.jpg"},
+    perception ? {...asArticle(perception),label:"Опросник",image:"/images/career-preview.jpg"} : {id:"perception",title:"Как я воспринимаю информацию",text:"Исследование индивидуальных особенностей восприятия.",href:"/test/perception",label:"Опросник",image:"/images/career-preview.jpg"},
     stories ? {...asArticle(stories),label:"Раздел блога"} : {id:"stories",title:"Сказкотерапия",text:"Истории, которые помогают говорить о чувствах и переживаниях.",href:"/topics/stories",label:"Раздел блога"},
   ];
   return [...picked.map(asArticle),...defaults.filter(c=>!picked.some(x=>x.id===c.id))].slice(0,3);

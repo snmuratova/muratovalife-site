@@ -652,3 +652,25 @@ body { font-size: var(--type-body); line-height: var(--leading-body); }
   .catalog-heading { margin:36px 0 40px; }
   .catalog-section { padding-bottom:40px; }
 }
+
+/* v30: targeted refinements only; original layout, typography families and palette remain. */
+.home-action { font-size:clamp(18px,1.5vw,21px); min-height:68px; padding:14px 22px; }
+.home-action span { font-size:24px; }
+@media (min-width:1081px) {
+  .hero-content { justify-content:space-between; }
+  .hero-directions { align-items:stretch; }
+  .direction-card { min-height:clamp(180px,28vh,260px); padding:20px; }
+  .direction-card h2 { font-size:clamp(25px,2.1vw,30px); }
+  .direction-card p { font-size:clamp(16px,1.25vw,18px); line-height:1.5; }
+}
+.home-blog-cover { width:100%; aspect-ratio:1.65; overflow:hidden; border-radius:var(--radius-card); margin-bottom:20px; background:var(--color-warm-neutral); }
+.home-blog-cover img { width:100%; height:100%; object-fit:cover; display:block; }
+.home-practice-link { isolation:isolate; background-size:cover; background-position:center 58%; overflow:hidden; }
+.home-practice-mac { background-image:linear-gradient(90deg,rgba(250,249,245,.92),rgba(250,249,245,.62) 68%,rgba(250,249,245,.28)),url('/images/home-mac-path.jpeg'); }
+.home-practice-retreat, .home-practice-link:nth-child(2) { background-image:linear-gradient(90deg,rgba(250,249,245,.92),rgba(250,249,245,.62) 68%,rgba(250,249,245,.28)),url('/images/home-retreat-forest.jpeg'); background-color:var(--color-warm-neutral); }
+.home-practice-link h3,.home-practice-link p,.home-practice-link > span { position:relative; z-index:1; }
+.bottom-grid .wide-card { min-height:0; padding:24px; }
+.bottom-grid .wide-card h2 { margin-top:0; }
+.bottom-grid .contact-form { gap:10px; margin-top:12px; }
+.bottom-grid .contact-form textarea { min-height:76px; }
+@media (max-width:680px) { .home-action { font-size:18px; min-height:58px; } .home-practice-link { background-position:center; } }

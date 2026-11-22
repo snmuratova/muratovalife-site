@@ -150,6 +150,7 @@ export default function Home({ cards, featuredArticles = [] }) {
         <div className="home-blog-grid">
           {featuredArticles.map(article => (
             <a key={article.id} className="home-blog-article" href={article.href}>
+              {article.image && <div className="home-blog-cover"><img src={article.image} alt="" loading="lazy" /></div>}
               <span className="home-blog-label">{article.label || "Статья"}</span>
               <h3>{article.title}</h3>
               {article.text && <p>{article.text}</p>}
@@ -163,8 +164,8 @@ export default function Home({ cards, featuredArticles = [] }) {
       <section id="try-now" className="section section-shell home-practices">
         <div className="section-heading"><span>04</span><h2>Ответить на свои вопросы сейчас</h2></div>
         <div className="home-practice-grid">
-          <a className="home-practice-link" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
-          <a className="home-practice-link" href="/material/quality-0"><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
+          <a className="home-practice-link home-practice-mac" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
+          <a className="home-practice-link home-practice-retreat" href="/material/quality-0"><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
         </div>
       </section>
 
