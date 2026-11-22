@@ -674,3 +674,23 @@ body { font-size: var(--type-body); line-height: var(--leading-body); }
 .bottom-grid .contact-form { gap:10px; margin-top:12px; }
 .bottom-grid .contact-form textarea { min-height:76px; }
 @media (max-width:680px) { .home-action { font-size:18px; min-height:58px; } .home-practice-link { background-position:center; } }
+
+/* v31: restrained CTA contrast and genuinely compact contact cards. */
+.home-actions .home-action:nth-child(1){background:#d7e2d5;border-color:#bacbb9;color:#344f42}
+.home-actions .home-action:nth-child(2){background:#f5eee1;border-color:#ded2c2;color:#344f42}
+.home-actions .home-action:nth-child(3){background:#e1e8e4;border-color:#c4d1ca;color:#344f42}
+.home-actions .home-action:hover{background:#fff;border-color:#879e90}
+.bottom-grid{align-items:start}
+.bottom-grid .wide-card{min-height:0!important;height:auto!important;padding:20px 24px!important}
+.bottom-grid #about.wide-card{justify-content:flex-start;gap:12px}
+.bottom-grid #about .about-socials{margin-top:10px}
+.bottom-grid #about .arrow-button{margin-top:0}
+.bottom-grid .contact-card{min-height:0!important}
+.bottom-grid .contact-form{gap:8px;margin-top:10px}
+.bottom-grid .contact-form label{gap:4px}
+.bottom-grid .contact-form input{min-height:40px;padding:8px 12px}
+.bottom-grid .contact-form textarea{min-height:64px;height:72px;padding:8px 12px}
+.bottom-grid .contact-form .form-button{margin-top:2px}
+.career-priorities-card{display:flex;flex-direction:column}
+.career-priorities-card a{margin-top:auto}
+@media(max-width:680px){.bottom-grid .wide-card{padding:20px!important}}
