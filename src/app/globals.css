@@ -694,3 +694,57 @@ body { font-size: var(--type-body); line-height: var(--leading-body); }
 .career-priorities-card{display:flex;flex-direction:column}
 .career-priorities-card a{margin-top:auto}
 @media(max-width:680px){.bottom-grid .wide-card{padding:20px!important}}
+
+/* v32: match the height of the two closing cards on desktop.
+   The contact form determines the row height; the about card stretches
+   to the same bottom edge without introducing a fixed pixel height. */
+@media (min-width:901px) {
+  .bottom-grid { align-items: stretch; }
+  .bottom-grid > .wide-card {
+    height: 100% !important;
+    align-self: stretch;
+  }
+  .bottom-grid #about.wide-card {
+    justify-content: space-between;
+  }
+  .bottom-grid #about .arrow-button {
+    margin-top: auto;
+  }
+}
+/* On small screens cards are stacked and use their natural content heights. */
+@media (max-width:900px) {
+  .bottom-grid { align-items: start; }
+  .bottom-grid > .wide-card { height: auto !important; }
+}
+
+/* v33: the supplied watercolor is an actual image layer in the retreat card.
+   A new asset URL avoids stale caches; the gradient keeps the heading legible. */
+.home-practice-retreat {
+  background-image:none !important;
+  background-color:var(--color-warm-neutral);
+  isolation:isolate;
+  position:relative;
+  overflow:hidden;
+}
+.home-practice-retreat-art {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 61%;
+  display:block;
+  z-index:0;
+  pointer-events:none;
+}
+.home-practice-retreat::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(250,249,245,.96) 0%,rgba(250,249,245,.88) 36%,rgba(250,249,245,.34) 78%,rgba(250,249,245,.14) 100%);
+  pointer-events:none;
+}
+.home-practice-retreat > h3,
+.home-practice-retreat > p {position:relative;z-index:2;}
+.home-practice-retreat > span {position:absolute;right:26px;bottom:20px;z-index:2;}

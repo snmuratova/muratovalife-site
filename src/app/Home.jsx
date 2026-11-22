@@ -165,7 +165,7 @@ export default function Home({ cards, featuredArticles = [] }) {
         <div className="section-heading"><span>04</span><h2>Ответить на свои вопросы сейчас</h2></div>
         <div className="home-practice-grid">
           <a className="home-practice-link home-practice-mac" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
-          <a className="home-practice-link home-practice-retreat" href="/material/quality-0"><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
+          <a className="home-practice-link home-practice-retreat" href="/material/quality-0"><img className="home-practice-retreat-art" src="/images/home-retreat-forest-v33.jpeg" alt="" loading="lazy" /><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
         </div>
       </section>
 
