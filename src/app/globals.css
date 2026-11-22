@@ -748,3 +748,30 @@ body { font-size: var(--type-body); line-height: var(--leading-body); }
 .home-practice-retreat > h3,
 .home-practice-retreat > p {position:relative;z-index:2;}
 .home-practice-retreat > span {position:absolute;right:26px;bottom:20px;z-index:2;}
+
+
+/* v35: clearer action-button contrast, using only the existing muted palette. */
+.home-actions .home-action:nth-child(1) {
+  background:#bfcfbe;
+  border-color:#a6bda8;
+  color:#2e4a3b;
+}
+.home-actions .home-action:nth-child(2) {
+  background:#f1e5cf;
+  border-color:#d9c8aa;
+  color:#3c4b3f;
+}
+.home-actions .home-action:nth-child(3) {
+  background:#cbdcd6;
+  border-color:#adc7bd;
+  color:#2d4a42;
+}
+.home-actions .home-action:hover {
+  background:#f9faf7;
+  border-color:#819e8e;
+}
+/* Show the treetops and mist, not the rocks at the bottom of the painting.
+   This changes framing only: the source image, text and card size stay intact. */
+.home-practice-retreat-art {
+  object-position:center 32%;
+}
