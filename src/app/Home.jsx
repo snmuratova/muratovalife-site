@@ -54,7 +54,7 @@ function ArrowButton({ label, href, external = false }) {
   return <button className="arrow-button" type="button" aria-label={label}><Icon name="arrow" /></button>;
 }
 
-export default function Home({ cards }) {
+export default function Home({ cards, featuredArticles = [] }) {
   const learningCards = cards.filter(c => c.group === "learning");
   const qualityCards = cards.filter(c => c.group === "quality");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -81,14 +81,6 @@ export default function Home({ cards }) {
         <nav id="site-navigation" className={`desktop-nav${menuOpen ? " is-open" : ""}`} aria-label="Основная навигация" onClick={(event) => { if (event.target.closest("a")) setMenuOpen(false); }}>
           <a href="#top">Главная</a>
           <a href="/catalog">Продукты</a>
-          <details className="nav-dropdown">
-            <summary>Бесплатные материалы</summary>
-            <div className="nav-dropdown-menu">
-              <a href="/free">Все материалы</a>
-              <a href="https://t.me/spokoino_online_bot" target="_blank" rel="noopener noreferrer">Спокойно</a>
-              <a href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer">Метафорические образы</a>
-            </div>
-          </details>
           <a href="/blog">Блог</a>
           <a href="#about">Обо мне</a>
           <a href="#contacts">Контакты</a>
@@ -123,6 +115,12 @@ export default function Home({ cards }) {
         </div>
       </section>
 
+      <nav className="home-actions section-shell" aria-label="С чего начать">
+        <a href="/catalog" className="home-action">Исследовать свои возможности <span aria-hidden="true">→</span></a>
+        <a href="/catalog#programs" className="home-action">Выбрать программу <span aria-hidden="true">→</span></a>
+        <a href="#try-now" className="home-action">Попробовать практику <span aria-hidden="true">→</span></a>
+      </nav>
+
       <section id="products" className="section section-shell"><div id="learning" className="anchor-offset" aria-hidden="true" />
         <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
         
@@ -139,11 +137,34 @@ export default function Home({ cards }) {
             return (
               <article className={`quality-card quality-${index + 1}`} key={card.title}>
                 <span className="icon-circle"><Icon name={card.icon} /></span>
-                <div><h3>{card.title}</h3><p>{card.text}</p></div>
+                <h3>{card.title}</h3><p>{card.text}</p>
                 <ArrowButton label={`Открыть: ${card.title}`} href={href} external={Boolean(card.href && card.href.startsWith("https://"))} />
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section id="blog-preview" className="section section-shell home-blog-section">
+        <div className="section-heading"><span>03</span><h2>Из блога</h2></div>
+        <div className="home-blog-grid">
+          {featuredArticles.map(article => (
+            <a key={article.id} className="home-blog-article" href={article.href}>
+              <span className="home-blog-label">{article.label || "Статья"}</span>
+              <h3>{article.title}</h3>
+              {article.text && <p>{article.text}</p>}
+              <span className="home-blog-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+        <a className="home-all-link" href="/blog">Все статьи <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section id="try-now" className="section section-shell home-practices">
+        <div className="section-heading"><span>04</span><h2>Ответить на свои вопросы сейчас</h2></div>
+        <div className="home-practice-grid">
+          <a className="home-practice-link" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
+          <a className="home-practice-link" href="/material/quality-0"><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
         </div>
       </section>
 
