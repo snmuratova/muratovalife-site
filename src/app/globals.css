@@ -496,3 +496,71 @@ h1 { margin: 18px 0 20px; max-width: 880px; font-family: var(--font-heading); fo
 .material-page .career-report-preview .primary-button{width:100%;}
 .material-page .career-report-preview .report-secondary{margin-top:12px;}
 .career-page .career-preview-anchor{font-size:15px;}
+
+
+/* v28 — sitewide rhythm and typography normalization.
+   Snell Roundhand declarations intentionally remain untouched. */
+html { -webkit-text-size-adjust: 100%; }
+body { font-size: var(--type-body); line-height: var(--leading-body); }
+:where(p, li) { overflow-wrap: break-word; }
+:where(a, button, input, textarea, select):focus-visible { outline: 2px solid var(--color-evergreen-deep); outline-offset: 3px; }
+:where(button, input, textarea, select) { max-width: 100%; }
+:where(img, svg) { max-width: 100%; }
+.section-shell, .site-header { min-width: 0; }
+.site-header { gap: var(--space-10); }
+.desktop-nav { gap: clamp(16px, 2.4vw, 40px); }
+.primary-button { min-height: 48px; padding-inline: var(--space-6); font-size: 16px; line-height: 24px; text-align: center; }
+.arrow-button { width: 48px; height: 48px; }
+.hero { gap: clamp(32px, 6vw, 88px); padding-block: clamp(32px, 4vw, 64px); }
+.hero h1 { font-size: var(--type-h1); line-height: var(--leading-h1); margin: var(--space-4) 0 var(--space-5); }
+.hero-subtitle { font-size: 18px; line-height: 28px; margin-bottom: var(--space-8); }
+.hero-directions, .learning-grid, .quality-grid, .bottom-grid { gap: var(--space-5); }
+.direction-card { padding: var(--space-6); gap: var(--space-4); }
+.direction-card h2, .service-card h3, .quality-card h3, .wide-card h2 { font-size: var(--type-h3); line-height: var(--leading-h3); }
+.direction-card p, .service-card p, .quality-card p, .wide-card p { font-size: var(--type-body); line-height: var(--leading-body); }
+.service-card { padding: var(--space-6); }
+.service-card h3 { margin: var(--space-8) 0 var(--space-4); }
+.quality-card { padding: var(--space-7); gap: var(--space-5); }
+.wide-card { padding: var(--space-8); }
+.section { padding-block: clamp(56px, 7vw, 96px); }
+.section-heading { gap: var(--space-4); margin-bottom: var(--space-8); }
+.section-heading h2 { font-size: var(--type-h2); line-height: var(--leading-h2); }
+:where(.topic-page, .material-page, .career-page, .life-page) :where(p, li) { line-height: 1.7; }
+:where(.topic-page, .material-page, .career-page, .life-page) :where(h1, h2, h3) { text-wrap: balance; }
+:where(.topic-page, .material-page, .career-page, .life-page) h1 { line-height: 1.1; }
+.topic-tags { gap: var(--space-2); margin: var(--space-5) 0 var(--space-8); }
+.test-panel { margin-top: var(--space-5); padding: clamp(16px, 4vw, 40px); }
+.test-options { gap: var(--space-3); margin: var(--space-6) 0; }
+.test-options button { min-height: 44px; text-align: left; line-height: 24px; }
+.test-panel button:not(.primary-button) { padding: 12px 16px; }
+.test-score p, .career-result-card>p, .career-page .topic-articles .career-test-detail { font-size: 16px; line-height: 28px; }
+.career-dashboard { padding: clamp(20px, 3.5vw, 40px); border-radius: 24px; }
+.career-dashboard-heading { gap: var(--space-6); margin-bottom: var(--space-6); }
+.career-dashboard-heading h2 { font-size: var(--type-h2); line-height: var(--leading-h2); }
+.career-dashboard-grid { gap: var(--space-5); }
+.career-result-card { border-radius: 20px; padding: clamp(20px, 2.4vw, 28px); }
+.career-result-card h3 { font-size: var(--type-h3); line-height: var(--leading-h3); }
+.career-result-card>p { margin-bottom: var(--space-4); }
+.career-result-card .career-result-explanation, .career-sample-link { font-size: 14px; line-height: 24px; }
+.career-dashboard-footer p, .career-chart-note, .career-chart-warning { font-size: 14px!important; line-height: 24px!important; }
+.career-bar-heading, .career-progress, .career-status { font-size: 14px; line-height: 20px; }
+.career-bar-track { height: 12px; }
+.contact-form { gap: var(--space-4); }
+.contact-form label { gap: var(--space-2); }
+.contact-form input, .contact-form textarea { min-height: 44px; font-size: 16px; line-height: 24px; padding: 12px 16px; }
+.life-heading { padding: clamp(40px, 7vw, 96px) 0 clamp(32px, 5vw, 64px); }
+.life-heading p { line-height: 1.7; }
+@media (max-width: 680px) {
+  .site-header { gap: 16px; }
+  .hero { gap: 28px; padding-top: 20px; }
+  .hero h1 { font-size: clamp(40px, 10vw, 44px); line-height: 1.1; margin: 16px 0; }
+  .hero-subtitle { font-size: 16px; line-height: 28px; margin-bottom: 24px; }
+  .hero-directions { gap: 16px; }
+  .direction-card { padding: 20px; gap: 16px; }
+  .direction-card h2 { font-size: 24px; line-height: 28px; }
+  .direction-card p { font-size: 16px; line-height: 28px; }
+  .service-card { padding: 24px; }
+  .quality-card { padding: 24px; gap: 16px; }
+  .section { padding-block: 56px; }
+  .career-dashboard-grid { gap: 16px; }
+}
