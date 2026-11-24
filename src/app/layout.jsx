@@ -16,10 +16,12 @@ const manrope = Manrope({
   display: "swap",
 });
 
+import {siteUrl, homeTitle, homeDescription} from '../lib/seo';
 export const metadata = {
-  title: "MuratovaLife | Светлана Муратова",
-  description:
-    "Психолог Светлана Муратова. Обучение и развитие для детей и подростков и пространство эмоционального восстановления.",
+  metadataBase: new URL(siteUrl),
+  title: homeTitle,
+  description: homeDescription,
+  ...(process.env.GOOGLE_SITE_VERIFICATION || process.env.YANDEX_VERIFICATION ? {verification: {google: process.env.GOOGLE_SITE_VERIFICATION, yandex: process.env.YANDEX_VERIFICATION}} : {}),
 };
 
 export default function RootLayout({ children }) {

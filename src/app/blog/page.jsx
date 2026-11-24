@@ -1,3 +1,5 @@
+import {pageSeo} from "../../lib/seo";
+export const metadata = pageSeo("Блог психолога", "Статьи о развитии детей, обучении, профориентации, сказкотерапии и качестве жизни.", "/blog");
 import { typo as displayTypography } from '../../lib/typography';
 import {topics} from '../../lib/topics';import {readCards} from '../../lib/store';
 export const dynamic='force-dynamic';

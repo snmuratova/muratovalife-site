@@ -1,5 +1,7 @@
+import {pageSeo} from "../../../lib/seo";
+export const metadata = pageSeo("Матрица Эйзенхауэра онлайн", "Бесплатная практика расстановки приоритетов: распределите задачи по важности и срочности.", "/practice/priorities");
 import { typo as displayTypography } from '../../../lib/typography';
-export const metadata={title:'Практика расстановки приоритетов | MuratovaLife'};
+
 const groups=[
  ['Важное и срочное','Что действительно требует внимания сегодня?'],
  ['Важное, но не срочное','Для чего стоит заранее выделить время?'],

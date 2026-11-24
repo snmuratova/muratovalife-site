@@ -1,7 +1,9 @@
+import {pageSeo} from "../../lib/seo";
+export const metadata = pageSeo("Программы психолога и бесплатные онлайн-опросники", "Программы обучения и развития, профориентация, исследование сильных сторон и бесплатные практики.", "/catalog");
 import { typo as displayTypography } from '../../lib/typography';
 import { readCards } from "../../lib/store";
 export const dynamic = "force-dynamic";
-export const metadata = {title:"Продукты и исследование возможностей | MuratovaLife"};
+
 
 export default async function Page() {
   const cards = await readCards();

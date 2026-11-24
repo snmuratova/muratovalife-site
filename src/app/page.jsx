@@ -1,3 +1,5 @@
+import {siteUrl, homeTitle, homeDescription} from '../lib/seo';
+export const metadata = {title:homeTitle, description:homeDescription, alternates:{canonical:siteUrl}, openGraph:{title:homeTitle,description:homeDescription,url:siteUrl,siteName:'MuratovaLife',locale:'ru_RU',type:'website',images:[{url:siteUrl+'/images/svetlana-muratova.jpeg'}]}};
 import Home from "./Home";
 import { readCards } from "../lib/store";
 export const dynamic = "force-dynamic";
@@ -19,5 +21,6 @@ function chooseFeatured(cards) {
 }
 export default async function Page() {
   const cards = await readCards();
-  return <Home cards={cards.filter(c=>c.visible)} featuredArticles={chooseFeatured(cards)}/>;
+  const schema = {'@context':'https://schema.org','@type':'WebSite',name:'MuratovaLife',url:siteUrl,inLanguage:'ru',publisher:{'@type':'Person',name:'Светлана Муратова',jobTitle:'Психолог',url:siteUrl,image:siteUrl+'/images/svetlana-muratova.jpeg'}};
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/><Home cards={cards.filter(c=>c.visible)} featuredArticles={chooseFeatured(cards)}/></>;
 }
