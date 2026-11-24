@@ -1,4 +1,5 @@
 'use client';
+import { typo as displayTypography } from '../../../lib/typography';
 import {useEffect,useState} from 'react';
 
 const DEFAULT_DAYS = [
@@ -113,38 +114,38 @@ export default function RetreatJourney({title,description,body,image,retreatDays
       <div className="retreat-hero-wash"/>
       <div className="retreat-hero-content">
         <a className="retreat-back" href="/topics/life">← Качество жизни</a>
-        <p className="retreat-kicker">MuratovaLife · 7 дней для себя</p>
-        <h1>{title}</h1>
-        <p className="retreat-intro">Семь дней, чтобы замедлиться, услышать себя и постепенно вернуть внимание к тому, что поддерживает.</p>
-        <p className="retreat-description">{description||'Пространство глубокого эмоционального восстановления.'}</p>
-        {body&&<p className="retreat-description">{body}</p>}
+        <p className="retreat-kicker">MuratovaLife · 7 дней для себя</p>
+        <h1>{displayTypography(title)}</h1>
+        <p className="retreat-intro">Семь дней, чтобы замедлиться, услышать себя и постепенно вернуть внимание к тому, что поддерживает.</p>
+        <p className="retreat-description">{displayTypography(description||'Пространство глубокого эмоционального восстановления.')}</p>
+        {displayTypography(body&&<p className="retreat-description">{displayTypography(body)}</p>)}
         <a className="retreat-start" href="#retreat-day-1">Начать практику <span aria-hidden="true">↓</span></a>
-        <p className="retreat-hero-small">По 7–15 минут в день · В своём темпе · Без регистрации</p>
+        <p className="retreat-hero-small">По 7–15 минут в день · В своём темпе · Без регистрации</p>
       </div>
     </section>
     <nav className="retreat-day-nav" aria-label="Переход к дням ретрита">
-      <div className="retreat-nav-inner"><span>Ваш путь</span><div className="retreat-nav-days">{days.map((day,i)=><a href={'#retreat-day-'+(i+1)} key={i} aria-label={'День '+(i+1)+': '+day.name} className={done.includes(i)?'completed':''}>{String(i+1).padStart(2,'0')}</a>)}</div><span className="retreat-progress" aria-live="polite">{ready?done.length:0} из 7</span></div>
+      <div className="retreat-nav-inner"><span>Ваш путь</span><div className="retreat-nav-days">{displayTypography(days.map((day,i)=><a href={'#retreat-day-'+(i+1)} key={i} aria-label={'День '+(i+1)+': '+day.name} className={done.includes(i)?'completed':''}>{displayTypography(String(i+1).padStart(2,'0'))}</a>))}</div><span className="retreat-progress" aria-live="polite">{displayTypography(ready?done.length:0)} из 7</span></div>
     </nav>
-    {days.map((day,i)=><section className={'retreat-scene retreat-scene-'+(i+1)} id={'retreat-day-'+(i+1)} key={i}  aria-labelledby={'retreat-title-'+i}>
+    {displayTypography(days.map((day,i)=><section className={'retreat-scene retreat-scene-'+(i+1)} id={'retreat-day-'+(i+1)} key={i}  aria-labelledby={'retreat-title-'+i}>
       <div className="retreat-scene-wash" />
       <div className="retreat-scene-content">
         <div className="retreat-day-text">
-          <p className="retreat-kicker">{day.caption} · {day.duration}</p>
-          <h2 id={'retreat-title-'+i}>{day.name}</h2>
-          <p className="retreat-lead">{day.lead}</p>
+          <p className="retreat-kicker">{displayTypography(day.caption)} · {displayTypography(day.duration)}</p>
+          <h2 id={'retreat-title-'+i}>{displayTypography(day.name)}</h2>
+          <p className="retreat-lead">{displayTypography(day.lead)}</p>
           <h3>Практика дня</h3>
-          <ol>{day.steps.map((step,j)=><li key={j}>{step}</li>)}</ol>
-          {i===0&&<a className="retreat-resource" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer">Открыть метафорическую карту ↗</a>}
-          {i===3&&<a className="retreat-resource" href="/practice/priorities">Практика расстановки приоритетов →</a>}
-          <label htmlFor={'retreat-note-'+i} className="retreat-question">{day.question}</label>
+          <ol>{displayTypography(day.steps.map((step,j)=><li key={j}>{displayTypography(step)}</li>))}</ol>
+          {displayTypography(i===0&&<a className="retreat-resource" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer">Открыть метафорическую карту ↗</a>)}
+          {displayTypography(i===3&&<a className="retreat-resource" href="/practice/priorities">Практика расстановки приоритетов →</a>)}
+          <label htmlFor={'retreat-note-'+i} className="retreat-question">{displayTypography(day.question)}</label>
           <textarea id={'retreat-note-'+i} rows="3" value={notes[i]||''} onChange={e=>setNotes(prev=>({...prev,[i]:e.target.value}))} placeholder="Мои мысли сегодня…" />
-          <p className="retreat-private">Заметка хранится только в этом браузере на вашем устройстве.</p>
-          <button type="button" className={'retreat-done'+(done.includes(i)?' is-done':'')} onClick={()=>toggle(i)} aria-pressed={done.includes(i)}>{done.includes(i)?'✓ День отмечен':'Завершить день'}</button>
+          <p className="retreat-private">Заметка хранится только в этом браузере на вашем устройстве.</p>
+          <button type="button" className={'retreat-done'+(done.includes(i)?' is-done':'')} onClick={()=>toggle(i)} aria-pressed={done.includes(i)}>{displayTypography(done.includes(i)?'✓ День отмечен':'Завершить день')}</button>
         </div>
       </div>
-    </section>)}
+    </section>))}
     <footer className="retreat-end" >
-      <div className="retreat-end-content"><p className="retreat-kicker">Продолжение пути</p><h2 className="retreat-handwritten">Пусть у вас останется время для себя</h2><p>Возвращайтесь к любому дню, когда захочется. Здесь нет обязательного темпа и правильного способа чувствовать.</p><button type="button" className="retreat-download" onClick={downloadNotes}>Скачать мои заметки ↓</button><p className="retreat-private">Файл сохраняется на ваше устройство. Записи не отправляются администратору сайта.</p><a href="#retreat-day-1">Вернуться к первому дню ↑</a><p className="retreat-safety">Эти практики предназначены для самостоятельной эмоциональной поддержки и не заменяют психологическую или медицинскую помощь.</p></div>
+      <div className="retreat-end-content"><p className="retreat-kicker">Продолжение пути</p><h2 className="retreat-handwritten">Пусть у вас останется время для себя</h2><p>Возвращайтесь к любому дню, когда захочется. Здесь нет обязательного темпа и правильного способа чувствовать.</p><button type="button" className="retreat-download" onClick={downloadNotes}>Скачать мои заметки ↓</button><p className="retreat-private">Файл сохраняется на ваше устройство. Записи не отправляются администратору сайта.</p><a href="#retreat-day-1">Вернуться к первому дню ↑</a><p className="retreat-safety">Эти практики предназначены для самостоятельной эмоциональной поддержки и не заменяют психологическую или медицинскую помощь.</p></div>
     </footer>
   </main>;
 }

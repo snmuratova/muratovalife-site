@@ -1,5 +1,6 @@
 "use client";
 
+import { typo as displayTypography } from '../lib/typography';
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -33,7 +34,7 @@ function Icon({ name }) {
     telegram: <><path d="M21 3 3.8 10.2c-.8.3-.8 1.5.1 1.8l4.5 1.5 1.5 4.5c.3.9 1.5.9 1.8.1L21 3Z"/><path d="m8.4 13.5 5.2-5.2"/></>,
   };
 
-  return <svg {...common}>{paths[name]}</svg>;
+  return <svg {...common}>{displayTypography(paths[name])}</svg>;
 }
 
 function ArrowButton({ label, href, external = false }) {
@@ -82,7 +83,7 @@ export default function Home({ cards, featuredArticles = [] }) {
           <a href="#top">Главная</a>
           <a href="/catalog">Продукты</a>
           <a href="/blog">Блог</a>
-          <a href="#about">Обо мне</a>
+          <a href="#about">Обо мне</a>
           <a href="#contacts">Контакты</a>
         </nav>
         <a className="primary-button header-button" href="#contacts">Связаться</a>
@@ -99,16 +100,16 @@ export default function Home({ cards, featuredArticles = [] }) {
             <span className="hero-role">Психолог</span>
           </div>
           <h1>Наше восприятие определяет качество нашей жизни</h1>
-          <p className="hero-subtitle">Рада приветствовать вас на сайте.</p>
+          <p className="hero-subtitle">Рада приветствовать вас на сайте.</p>
           <div className="hero-directions">
             <article className="direction-card direction-learning">
               <span className="icon-circle"><Icon name="person" /></span>
-              <div><h2>Обучение и развитие</h2><p>Индивидуальные стратегии обучения, раскрытие способностей и развитие потенциала.</p></div>
+              <div><h2>Обучение и развитие</h2><p>Индивидуальные стратегии обучения, раскрытие способностей и развитие потенциала.</p></div>
               <ArrowButton label="Перейти к обучению и развитию" href="#learning" />
             </article>
             <article className="direction-card direction-quality">
               <span className="icon-circle"><Icon name="heart" /></span>
-              <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления, самопознания и внутреннего равновесия.</p></div>
+              <div><h2>Качество жизни</h2><p>Пространство эмоционального восстановления, самопознания и внутреннего равновесия.</p></div>
               <ArrowButton label="Перейти к качеству жизни" href="#quality" />
             </article>
           </div>
@@ -125,46 +126,46 @@ export default function Home({ cards, featuredArticles = [] }) {
         <div className="section-heading"><span>01</span><h2>Обучение и развитие</h2></div>
         
         <div className="learning-grid">
-          {learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{card.title}</h3><p>{card.text}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (`/material/${card.id}`)} /></article>)}
+          {displayTypography(learningCards.map((card) => <article className="service-card" key={card.title}><span className="icon-circle"><Icon name={card.icon} /></span><h3>{displayTypography(card.title)}</h3><p>{displayTypography(card.text)}</p><ArrowButton label={`Открыть: ${card.title}`} href={card.href || (`/material/${card.id}`)} /></article>))}
         </div>
       </section>
 
       <section id="quality" className="section section-shell quality-section">
         <div className="section-heading"><span>02</span><h2>Качество жизни</h2></div>
         <div className="quality-grid">
-          {qualityCards.map((card, index) => {
+          {displayTypography(qualityCards.map((card, index) => {
             const href = card.href || `/material/${card.id}`;
             return (
               <article className={`quality-card quality-${index + 1}`} key={card.title}>
                 <span className="icon-circle"><Icon name={card.icon} /></span>
-                <h3>{card.title}</h3><p>{card.text}</p>
+                <h3>{displayTypography(card.title)}</h3><p>{displayTypography(card.text)}</p>
                 <ArrowButton label={`Открыть: ${card.title}`} href={href} external={Boolean(card.href && card.href.startsWith("https://"))} />
               </article>
             );
-          })}
+          }))}
         </div>
       </section>
 
       <section id="blog-preview" className="section section-shell home-blog-section">
-        <div className="section-heading"><span>03</span><h2>Из блога</h2></div>
+        <div className="section-heading"><span>03</span><h2>Из блога</h2></div>
         <div className="home-blog-grid">
-          {featuredArticles.map(article => (
+          {displayTypography(featuredArticles.map(article => (
             <a key={article.id} className="home-blog-article" href={article.href}>
-              {article.image && <div className="home-blog-cover"><img src={article.image} alt="" loading="lazy" /></div>}
-              <span className="home-blog-label">{article.label || "Статья"}</span>
-              <h3>{article.title}</h3>
-              {article.text && <p>{article.text}</p>}
+              {displayTypography(article.image && <div className="home-blog-cover"><img src={article.image} alt="" loading="lazy" /></div>)}
+              <span className="home-blog-label">{displayTypography(article.label || "Статья")}</span>
+              <h3>{displayTypography(article.title)}</h3>
+              {displayTypography(article.text && <p>{displayTypography(article.text)}</p>)}
               <span className="home-blog-arrow" aria-hidden="true">→</span>
             </a>
-          ))}
+          )))}
         </div>
         <a className="home-all-link" href="/blog">Все статьи <span aria-hidden="true">→</span></a>
       </section>
 
       <section id="try-now" className="section section-shell home-practices">
-        <div className="section-heading"><span>04</span><h2>Ответить на свои вопросы сейчас</h2></div>
+        <div className="section-heading"><span>04</span><h2>Ответить на свои вопросы сейчас</h2></div>
         <div className="home-practice-grid">
-          <a className="home-practice-link home-practice-mac" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
+          <a className="home-practice-link home-practice-mac" href="https://t.me/mak_practice_bot" target="_blank" rel="noopener noreferrer"><h3>Метафорические образы</h3><p>Посмотрите на образ и прислушайтесь к своим мыслям и ощущениям.</p><span aria-hidden="true">↗</span></a>
           <a className="home-practice-link home-practice-retreat" href="/material/quality-0"><img className="home-practice-retreat-art" src="/images/home-retreat-forest-v33.jpeg" alt="" loading="lazy" /><h3>Эмоциональный ретрит</h3><p>Семь дней практик, чтобы уделить время себе.</p><span aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -172,9 +173,9 @@ export default function Home({ cards, featuredArticles = [] }) {
 <section className="section section-shell bottom-grid">
         <article id="about" className="wide-card powder">
           <div className="about-content">
-            <h2>Обо мне</h2>
+            <h2>Обо мне</h2>
             <h3 className="about-name">Светлана Муратова</h3>
-            <p>Я создаю индивидуальные стратегии обучения, развития и восстановления.</p>
+            <p>Я создаю индивидуальные стратегии обучения, развития и восстановления.</p>
             <div className="about-socials" aria-label="Социальные сети">
               <a className="social-link" href="https://instagram.com/muratovablog" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Icon name="instagram" /></a>
               <a className="social-link" href="https://t.me/teplaya_psihologiya" target="_blank" rel="noopener noreferrer" aria-label="Telegram — Тёплая психология"><Icon name="telegram" /></a>
@@ -185,7 +186,7 @@ export default function Home({ cards, featuredArticles = [] }) {
 
         <article id="contacts" className="wide-card sage contact-card">
           <div>
-            <h2>Связаться со мной</h2>
+            <h2>Связаться со мной</h2>
             <form className="contact-form" onSubmit={handleContactSubmit}>
               <label><span>Имя</span><input name="name" type="text" autoComplete="name" /></label>
               <label><span>Email или Telegram</span><input name="contact" type="text" required /></label>

@@ -1,1 +1,2 @@
-export function typo(s=''){return s.replace(/(^|[\s(«])((?:в|во|на|к|ко|с|со|у|о|об|обо|от|до|из|за|по|под|над|при|для|без|через|между|про|и|а|но|не|ни|же|бы|ли)) +(?=\S)/giu,'$1$2\u00a0').replace(/(\d) (?=\d{3}\b|₽)/g,'$1\u00a0').replace(/\s[—–]\s/g,': ');}
+// Presentation only: never changes punctuation or stored CMS content.
+export function typo(s=''){return (s=>typeof s==='string'?s.replace(/(^|[^\p{L}\p{N}_])((?:в|во|на|к|ко|с|со|у|о|об|обо|от|до|из|за|по|под|над|при|для|без|через|между|про|и|а|но|не|ни))(?= +\S) +/giu,'$1$2\u00a0').replace(/(\d) +(?=₽|%|(?:лет|год(?:а|ов)?|мин(?:ут[аы]?)?|час(?:а|ов)?|кг|см|мм|px)(?!\p{L}))/gu,'$1\u00a0').replace(/(\p{Lu}\.) +(?=\p{Lu})/gu,'$1\u00a0'):s)(s);}

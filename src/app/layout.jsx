@@ -1,3 +1,4 @@
+import { typo as displayTypography } from '../lib/typography';
 import { Forum, Manrope } from "next/font/google";
 import "./tokens.css";
 import "./globals.css";
@@ -24,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru" className={`${forum.variable} ${manrope.variable}`}>
-      <body>{children}</body>
+      <body>{displayTypography(children)}</body>
     </html>
   );
 }
